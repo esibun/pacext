@@ -63,7 +63,7 @@ def mount_special(container_info, name):
 
 
 def symlink_rel(container_info, name, target):
-    run(["ln", "-s", container_info.path + "/pacroot" + target,
+    run(["ln", "-s", target,
          container_info.path + "/pacroot" + name])
 
 
@@ -79,21 +79,21 @@ def prepare_pacroot(container_info):
 
     # mount filesystem dirs as appropriate
 
-    symlink_rel(container_info, "/bin", "/usr/bin")
+    symlink_rel(container_info, "/bin", "usr/bin")
     mount_direct(container_info, "boot", "/boot")
     mount_special(container_info, "dev")
     mount_direct(container_info, "efi", "/efi")
     mount_direct(container_info, "esp", "/esp")
     mount_direct(container_info, "etc", "/etc")
     mount_direct(container_info, "home", "/home")
-    symlink_rel(container_info, "/lib", "/usr/lib")
-    symlink_rel(container_info, "/lib64", "/usr/lib")
-    symlink_rel(container_info, "/mnt", "/var/mnt")
+    symlink_rel(container_info, "/lib", "usr/lib")
+    symlink_rel(container_info, "/lib64", "usr/lib")
+    symlink_rel(container_info, "/mnt", "var/mnt")
     mount_overlay(container_info, "opt", "/opt")
     mount_special(container_info, "proc")
     mount_direct(container_info, "root", "/root")
     mount_direct(container_info, "run", "/run")
-    symlink_rel(container_info, "/sbin", "/usr/bin")
+    symlink_rel(container_info, "/sbin", "usr/bin")
     mount_direct(container_info, "srv", "/srv")
     mount_special(container_info, "sys")
     mount_special(container_info, "tmp")
