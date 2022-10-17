@@ -1,1 +1,1 @@
-from .sync import sync
+from .sync import sync, upgrade
